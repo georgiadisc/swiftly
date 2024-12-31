@@ -1,0 +1,32 @@
+{
+  "name": "swiftly-server",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "migrate": "npx drizzle-kit push",
+    "start": "tsc && npm run migrate && node dist/src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "decimal.js": "^10.4.3",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.36.1",
+    "express": "^5.0.1",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.9.0",
+    "@types/pg": "^8.11.10",
+    "drizzle-kit": "^0.28.0",
+    "prettier": "3.3.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.1.6"
+  }
+}

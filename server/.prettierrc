@@ -1,0 +1,22 @@
+{
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": ["*.js", "*.ts", "*.tsx", "*.d.ts"],
+        "options": {
+          "arrowParens": "always",
+          "printWidth": 100,
+          "quoteProps": "preserve",
+          "tabWidth": 2,
+          "trailingComma": "all"
+        }
+      },
+      {
+        "files": "*.md",
+        "options": {
+          "parser": "markdown"
+        }
+      }
+    ]
+  }
+  
