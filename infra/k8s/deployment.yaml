@@ -1,0 +1,106 @@
+# swiftly-client
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  namespace: postgres-operator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+        - name: client
+          image: swiftly-client:latest
+          imagePullPolicy: Never
+          env:
+            - name: API_ENDPOINT
+              value: http://server:3000
+          ports:
+            - containerPort: 3000
+---
+# swiftly-server
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+  namespace: postgres-operator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+        - name: server
+          image: swiftly-server:latest
+          imagePullPolicy: Never
+          env:
+            - name: DB_USER
+              valueFrom:
+                { secretKeyRef: { name: hippo-pguser-rhino, key: user } }
+            - name: DB_PASSWORD
+              valueFrom:
+                { secretKeyRef: { name: hippo-pguser-rhino, key: password } }
+            - name: DB_ADDR
+              valueFrom:
+                { secretKeyRef: { name: hippo-pguser-rhino, key: host } }
+            - name: DB_PORT
+              valueFrom:
+                { secretKeyRef: { name: hippo-pguser-rhino, key: port } }
+            - name: DB_DATABASE
+              valueFrom:
+                { secretKeyRef: { name: hippo-pguser-rhino, key: dbname } }
+            - name: DATABASE_URL
+              value: postgres://$(DB_USER):$(DB_PASSWORD)@$(DB_ADDR):$(DB_PORT)/$(DB_DATABASE)
+          ports:
+            - containerPort: 3000
+# ---
+# # swiftly-db
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: db
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: db
+#   template:
+#     metadata:
+#       labels:
+#         app: db
+#     spec:
+#       containers:
+#         - name: db
+#           image: postgres:17
+#           env:
+#             - name: PGUSER
+#               value: postgres
+#             - name: POSTGRES_PASSWORD
+#               value: mypassword
+#           ports:
+#             - containerPort: 5432
+#           volumeMounts:
+#             - mountPath: /var/lib/postgresql/data
+#               name: pgdata
+#           livenessProbe:
+#             exec:
+#               command:
+#                 - pg_isready
+#             periodSeconds: 1
+#             timeoutSeconds: 5
+#             failureThreshold: 10
+#       volumes:
+#         - name: pgdata
+#           persistentVolumeClaim:
+#             claimName: pgdata

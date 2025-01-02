@@ -1,0 +1,42 @@
+# swiftly-client
+apiVersion: v1
+kind: Service
+metadata:
+  name: client
+  namespace: postgres-operator
+spec:
+  selector:
+    app: client
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+---
+# swiftly-server
+apiVersion: v1
+kind: Service
+metadata:
+  name: server
+  namespace: postgres-operator
+spec:
+  selector:
+    app: server
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+# ---
+# # swiftly-db
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: db
+# spec:
+#   selector:
+#     app: db
+#   ports:
+#     - protocol: TCP
+#       port: 5432
+#       targetPort: 5432
