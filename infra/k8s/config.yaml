@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-ca-cert
+  namespace: postgres-operator
+data:
+  ca.crt: |
+    -----BEGIN CERTIFICATE-----
+
+    -----END CERTIFICATE-----
