@@ -1,5 +1,7 @@
 ![Logo](docs/logo.svg)
 
+***
+
 A modern three-tier digital payments application inspired by Cash App and Venmo. Built with TypeScript, React, Node.js, and PostgreSQL.
 
 ## 🌟 Features
