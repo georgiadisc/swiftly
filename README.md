@@ -15,7 +15,7 @@ A modern three-tier digital payments application inspired by Cash App and Venmo.
 
 ## 📸 Screenshots
 
-![Activity page of Foodiverse](docs/activity.webp)
+![Activity page of Swiftly](docs/activity.webp)
 
 ## 📁 Project Structure
 
