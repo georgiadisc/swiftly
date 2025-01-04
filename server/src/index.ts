@@ -1,17 +1,20 @@
 import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
+import morgan from 'morgan';
 import db from './db/index.js';
+import { cardsTable } from './db/schema/cards.js';
 import { usersTable } from './db/schema/users.js';
 import payments from './routes/payments.js';
 import savings from './routes/savings.js';
 import transactions from './routes/transactions.js';
 import users from './routes/users.js';
 import wallet from './routes/wallet.js';
-import { cardsTable } from './db/schema/cards.js';
 
 const app = express();
 const port = 3000;
+
+app.use(morgan('tiny'));
 
 app.use(express.json());
 app.use(cors());
