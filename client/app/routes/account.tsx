@@ -6,7 +6,7 @@ import { API_ENDPOINT, userId } from '~/util';
 export const loader: LoaderFunction = async () => {
   const [user] = await Promise.all([fetch(`${API_ENDPOINT}/users?userId=${userId}`)]);
   const userData = await user.json();
-  return userData.data;
+  return userData;
 };
 
 export const meta: MetaFunction = () => {

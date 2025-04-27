@@ -7,7 +7,7 @@ import { API_ENDPOINT, userId } from '~/util';
 export const loader: LoaderFunction = async () => {
   const [card] = await Promise.all([fetch(`${API_ENDPOINT}/wallet/cards?userId=${userId}`)]);
   const cardData = await card.json();
-  return cardData.data[0];
+  return cardData[0];
 };
 
 export const meta: MetaFunction = () => {

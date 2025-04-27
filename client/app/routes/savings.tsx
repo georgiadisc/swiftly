@@ -28,7 +28,7 @@ function Savings({ userId }: { userId: number }) {
         const response = await fetch(`${API_ENDPOINT}/savings?userId=${userId}`);
         const data = await response.json();
         if (response.ok) {
-          setBalance(data.data.balance);
+          setBalance(data.balance);
         } else {
           console.error('Failed to fetch savings data', data);
         }
@@ -50,6 +50,7 @@ function Savings({ userId }: { userId: number }) {
         body: JSON.stringify({ userId, amount }),
       });
       const data = await response.json();
+      console.log('Deposit response:', data);
       if (response.ok) {
         console.log('Savings deposit successful:', data);
         setBalance(data.newBalance);

@@ -27,7 +27,7 @@ function CashBalance({ userId }: { userId: number }) {
         const response = await fetch(`${API_ENDPOINT}/wallet?userId=${userId}`);
         const data = await response.json();
         if (response.ok) {
-          setBalance(data.data.balance);
+          setBalance(data.balance);
         } else {
           console.error('Failed to fetch wallet data', data);
         }

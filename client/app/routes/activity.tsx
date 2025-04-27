@@ -12,7 +12,7 @@ export const loader: LoaderFunction = async () => {
   const walletData = await walletResponse.json();
   const transactionsData = await transactionsResponse.json();
 
-  return { wallet: walletData.data, transactions: transactionsData.data };
+  return { wallet: walletData, transactions: transactionsData };
 };
 
 export const meta: MetaFunction = () => {
