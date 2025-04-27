@@ -2,7 +2,7 @@
 
 ***
 
-A modern three-tier digital payments application inspired by Cash App and Venmo. Built with TypeScript, React, Node.js, and PostgreSQL.
+A modern three-tier digital payments application inspired by Cash App and Venmo. Built with **React** for the frontend, **PostgreSQL** for the database, and featuring backend implementations in both **Node.js/Express/TypeScript** and **Java/Spring Boot**.
 
 ## 🌟 Features
 
@@ -27,11 +27,23 @@ A modern three-tier digital payments application inspired by Cash App and Venmo.
 │   │   ├── entry.client.tsx
 │   │   └── entry.server.tsx
 │   └── public/
-├── server/
+├── server/                # Node.js/Express/TypeScript backend
 │   ├── routes/
 │   ├── db/
 │   │   └── schema/
 │   └── index.ts
+├── spring-server/         # Java/Spring Boot backend
+│   └── src/
+│       └── main/
+│           └── java/
+│               └── com/
+│                   └── swiftly/
+│                       └── server/
+│                           ├── controller/
+│                           ├── service/
+│                           ├── entity/
+│                           ├── repository/
+│                           └── ...
 └── infra/
 ```
 
@@ -40,12 +52,14 @@ A modern three-tier digital payments application inspired by Cash App and Venmo.
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/swiftly.git
 cd swiftly
 ```
 
 2. Start the application using Docker Compose:
+
 ```bash
 docker-compose up
 ```
@@ -53,6 +67,7 @@ docker-compose up
 The application should now be running at `http://localhost:3000`
 
 To stop the application:
+
 ```bash
 docker-compose down
 ```
@@ -72,9 +87,12 @@ docker-compose down
 | `/wallet/cash/deposit` | POST | Deposit cash |
 | `/wallet/cash/withdraw` | POST | Withdraw cash |
 
+> **Note:** Both Node.js/Express and Spring Boot backends implement similar REST APIs. You can choose which backend to run based on your preference or integration needs.
+
 ## 💾 Database Schema
 
 The application uses four main tables:
+
 - `users`: Stores user information and balances
 - `cards`: Manages linked payment cards
 - `payments`: Records user-to-user payments
@@ -87,6 +105,8 @@ The application uses four main tables:
 - [Remix](https://remix.run/)
 - [Node.js](https://nodejs.org/)
 - [Express](https://expressjs.com/)
+- [Java](https://www.java.com/)
+- [Spring Boot](https://spring.io/projects/spring-boot)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Drizzle ORM](https://orm.drizzle.team/)
 - [Docker](https://www.docker.com/)
